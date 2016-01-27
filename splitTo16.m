@@ -6,6 +6,7 @@ function splitTo16(path,filename,destpath)
 % at the path and named filename. The destination path
 % is indicated by destpath
 
+delete([destpath,filename(1:end-4),'_*.tif']);
 a=imfinfo([path,'\',filename]);
 for id=1:length(a)
     imdata=imread([path,'\',filename],'index',id);
