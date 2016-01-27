@@ -1,0 +1,1 @@
+This is a matlab program to split a 2048*2048 tif file into a set of 512*512 tif files. There are some other functions including background correction, cut some frames out, convert a tif from 16bit to 8bit etc. These functions are in order to process images collected by hamamatsu camera and a fluorescence microscopy
