@@ -8,5 +8,14 @@ delete([destpath,filename(1:end-4),'_8bit','.tif']);
 for id=1:length(a)
     imdata=imread([path,'\',filename],'index',id);
     imdata_correct=uint8(double(imdata)/4095*255);
-    imwrite(imdata_correct,[destpath,filename(1:end-4),'_8bit','.tif'],'writemode','append','compression','none');
+    flag=0;
+    while flag==0
+        try
+            imwrite(imdata_correct,[destpath,filename(1:end-4),'_8bit','.tif'],'writemode','append','compression','none');
+            flag=1;
+        catch e
+            pause(1)
+            disp(e.message)
+        end
+    end
 end

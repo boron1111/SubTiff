@@ -13,6 +13,15 @@ imwrite(im_ref,[destpath,filename(1:end-4),'_reg','.tif'],'writemode','append','
 for id=2:length(a)
     imdata=imread([path,'\',filename],'index',id);
     [imdata_reg offset]=image_register_correlation(im_ref,imdata);
-    imwrite(imdata_reg,[destpath,filename(1:end-4),'_reg','.tif'],'writemode','append','compression','none');
+    flag=0;
+    while flag==0
+        try
+            imwrite(imdata_reg,[destpath,filename(1:end-4),'_reg','.tif'],'writemode','append','compression','none');
+            flag=1;
+        catch e
+            pause(1)
+            disp(e.message)
+        end
+    end
     disp([id offset]);
 end
